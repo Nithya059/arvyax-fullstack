@@ -1,0 +1,13 @@
+html, body { padding: 0; margin: 0; font-family: system-ui, Arial, sans-serif; }
+a { color: #2563eb; text-decoration: none; }
+input, textarea, button, select { padding: 10px; margin: 6px 0; width: 100%; max-width: 420px; }
+.container { max-width: 720px; margin: 32px auto; padding: 0 16px; }
+nav { display: flex; gap: 12px; padding: 12px 16px; background: #f1f5f9; }
+nav a { font-weight: 600; }
+.card { padding: 16px; border: 1px solid #e5e7eb; border-radius: 12px; margin: 12px 0; }
+.btn { cursor: pointer; background: #2563eb; color: white; border: none; border-radius: 8px; }
+.btn.secondary { background: #0ea5e9; }
+.btn.danger { background: #ef4444; }
+.badge { padding: 2px 8px; border-radius: 9999px; font-size: 12px; background: #e5e7eb; }
+.badge.published { background: #4ade80; color: #064e3b; }
+.badge.draft { background: #fde68a; color: #7c2d12; }
