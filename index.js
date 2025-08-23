@@ -1,24 +1,49 @@
-import { useEffect, useState } from "react";
-import { API } from "../src/lib/api";
+// index.js
+import express from "express";
+import cors from "cors";
 
-export default function PublicView() {
-  const [items, setItems] = useState([]);
-  useEffect(() => {
-    fetch('${API}/api/sessions/public').then(r => r.json()).then(setItems);
-  }, []);
-  return (
-    <div style={{ padding: 24 }}>
-      <h1>Public Wellness Sessions</h1>
-      {items.length === 0 ? <p>No published sessions yet.</p> : (
-        <ul>
-          {items.map(s => (
-            <li key={s._id}>
-              <strong>{s.title}</strong> — {s.type} · {s.duration}m · {s.date}
-              <p>{s.description}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+const app = express();
+const PORT = 5000;
+
+// Middlewares
+app.use(cors());
+app.use(express.json());
+
+// Temporary in-memory session store
+let sessions = [];
+
+// Health check API
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", message: "Backend is running ✅" });
+});
+
+// Get all sessions
+app.get("/api/sessions", (req, res) => {
+  res.json(sessions);
+});
+
+// Add a new session
+app.post("/api/sessions", (req, res) => {
+  const { title, description, date, type } = req.body;
+
+  if (!title || !description || !date || !type) {
+    return res.status(400).json({ error: "All fields are required!" });
+  }
+
+  const newSession = {
+    id: sessions.length + 1,
+    title,
+    description,
+    date,
+    type,
+  };
+
+  sessions.push(newSession);
+
+  res.json(newSession);
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log('✅ Backend running at http://localhost:${PORT}');
+});
