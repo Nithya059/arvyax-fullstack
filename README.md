@@ -20,9 +20,40 @@ Features include:
 ---
 
 ## 🚀 Live Demo  
-- **Frontend (Vercel):** [Live Link Here](https://your-frontend-link.vercel.app)  
+- **Frontend (Vercel):** [Live Link Here](https://your-frontend-link.vercel.app)
+  
 - **Backend API (Render):** [API Link Here](https://your-backend-link.onrender.com)  
+
+## 📂 Project Structure
+/backend
+   ├── server.js
+   ├── models/
+   ├── routes/
+   └── ...
+/frontend
+   ├── src/
+   ├── public/
+   └── pages/
+   ---
+
+## 🔑 API Endpoints  
+
+### Authentication  
+- `POST /register` → Register user (with hashed password)  
+- `POST /login` → Login + returns JWT  
+
+### Sessions  
+- `GET /sessions` → View published sessions  
+- `GET /my-sessions` → View drafts/published sessions (auth required)  
+- `POST /my-sessions` → Create new session (auth required)  
+- `POST /my-sessions/publish` → Publish session  
 
 ---
 
-## 📂 Project Structure
+## ⚙️ Setup Instructions  
+
+### Backend (Node.js + Express)  
+1. Clone repo:  
+   ```bash
+   git clone https://github.com/Nithya059/arvyax-fullstack.git
+   cd arvyax-fullstack/backend
