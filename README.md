@@ -56,4 +56,4 @@ Features include:
 1. Clone repo:  
    ```bash
    git clone https://github.com/Nithya059/arvyax-fullstack.git
-   cd arvyax-fullstack/backend
+   
