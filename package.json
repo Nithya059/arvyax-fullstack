@@ -2,9 +2,11 @@
   "name": "arvyax-wellness-backend",
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+  "scripts": {  
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
