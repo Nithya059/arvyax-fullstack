@@ -26,7 +26,7 @@ Features include:
 
 ## 📂 Project Structure
 /backend
-   ├── server.js
+   ├── index.js
    ├── models/
    ├── routes/
    └── ...
@@ -48,12 +48,33 @@ Features include:
 - `POST /my-sessions` → Create new session (auth required)  
 - `POST /my-sessions/publish` → Publish session  
 
----
 
 ## ⚙️ Setup Instructions  
+# Install Depwndencies
+npm install
+
+# Creare .env file in backend
+MongoDB_URI= "your mongodb uri"
+PORT=5000
+JWT_Secret=your-secret
+
+# Start server
+node index.js
+
+## Frontend
+
+# install dependencies
+npm install
+
+# create .env.local file
+NEXT_APP_URL=your url
+
+# run 
+npm run dev
 
 ### Backend (Node.js + Express)  
 1. Clone repo:  
-   ```bash
+   
    git clone https://github.com/Nithya059/arvyax-fullstack.git
+   
    
