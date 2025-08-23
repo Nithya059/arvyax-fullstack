@@ -29,12 +29,12 @@ Features include:
    ├── index.js
    ├── models/
    ├── routes/
-   └── ...
+   └── middleware
 /frontend
    ├── src/
    ├── public/
    └── pages/
-   ---
+  
 
 ## 🔑 API Endpoints  
 
@@ -75,6 +75,6 @@ npm run dev
 ### Backend (Node.js + Express)  
 1. Clone repo:  
    
-   git clone https://github.com/Nithya059/arvyax-fullstack.git
+  git clone https://github.com/Nithya059/arvyax-fullstack.git
    
    
