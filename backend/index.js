@@ -1,26 +1,42 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-
-const authRoutes = require('./routes/auth');
-const sessionRoutes = require('./routes/sessions');
+// backend/index.js
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
+
+// Middleware
+app.use(cors());
 app.use(express.json());
-app.use(cors({
-  origin: [process.env.CORS_ORIGIN, 'http://localhost:3000'],
-  credentials: true
-}));
 
-app.get('/health', (req,res)=>res.json({ ok: true }));
-app.use('/auth', authRoutes);
-app.use('/api', sessionRoutes);
+// ✅ Root Route (fixes "Cannot GET /")
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running successfully on Render!");
+});
 
-mongoose.connect(process.env.MONGO_URI).then(()=>{
-  const port = process.env.PORT || 5000;
-  app.listen(port, () => console.log('API running on ' + port));
-}).catch(err => {
-  console.error('Mongo connection error:', err);
-  process.exit(1);
+// Example API route
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Hello from API 🎉" });
+});
+
+// MongoDB Connection
+const mongoURI = process.env.MONGO_URI;
+
+mongoose
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("✅ MongoDB connected");
+  })
+  .catch((err) => {
+    console.error("❌ Mongo connection error:", err);
+  });
+
+// Start server
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`🚀 API running on port ${PORT}`);
 });
