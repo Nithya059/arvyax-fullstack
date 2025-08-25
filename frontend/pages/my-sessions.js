@@ -4,10 +4,16 @@ export default function MySessions() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sessions`)
-      .then((res) => res.json())
-      .then((data) => setItems(data))
-      .catch((err) => console.error("Error fetching sessions:", err));
+    async function fetchData() {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/sessions`);
+        const data = await res.json();
+        setItems(data);
+      } catch (err) {
+        console.error("Error fetching sessions:", err);
+      }
+    }
+    fetchData();
   }, []);
 
   return (
