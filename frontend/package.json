@@ -1,5 +1,5 @@
 {
-  "name": "arvyax-wellness-frontend",
+  "name": "frontend",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "15.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "13.5.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "axios": "^1.6.7"
   }
 }
