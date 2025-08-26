@@ -1,15 +1,27 @@
-import { getData } from "../lib/api";
+import { useEffect, useState } from "react";
+import { getProtectedData } from "../lib/api";
 
-export default async function Home() {
-  const data = await getData();
+export default function Home() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await getProtectedData();
+        setData(res);
+      } catch (err) {
+        setError("Please login first ❌");
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold">Arvyax Wellness Frontend</h1>
-      <p className="mt-4">Data from backend:</p>
-      <pre className="bg-gray-100 p-4 mt-2 rounded">
-        {JSON.stringify(data, null, 2)}
-      </pre>
-    </main>
+    <div style={{ padding: 20 }}>
+      <h1>Welcome</h1>
+      {error && <p>{error}</p>}
+      {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>Loading...</p>}
+    </div>
   );
 }
